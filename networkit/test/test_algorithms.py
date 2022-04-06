@@ -742,5 +742,12 @@ class TestSelfLoops(unittest.TestCase):
 					spsp.run()
 					spsp.getDistances()
 
+	def testDistanceWithNonConsecutiveNodeLabelsAPSP(self):
+		nk.engineering.setSeed(1, True)
+		random.seed(1)
+		g = nk.generators.ErdosRenyiGenerator(100, 0.15).generate()
+		g.removeNode(0)
+		nk.distance.APSP(g).run()
+
 if __name__ == "__main__":
 	unittest.main()
